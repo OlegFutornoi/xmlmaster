@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         {/* Logo */}
         <div className="flex items-center">
           <span className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">
-            DASHBOARD
+            XMLMASTER
           </span>
         </div>
 

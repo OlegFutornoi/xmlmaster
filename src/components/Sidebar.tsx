@@ -24,7 +24,7 @@ export interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    title: 'Dashboard',
+    title: 'XmlMaster',
     path: '/',
     icon: LayoutDashboard
   },

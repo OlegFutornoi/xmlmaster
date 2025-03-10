@@ -16,7 +16,7 @@ interface FooterProps {
 
 const menuItems: MenuItem[] = [
   {
-    title: 'Dashboard',
+    title: 'XmlMaster',
     path: '/',
     icon: LayoutDashboard
   },
@@ -47,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Dashboard. All rights reserved.
+              © {new Date().getFullYear()} XmlMaster. All rights reserved.
             </p>
           </div>
           
