@@ -62,6 +62,14 @@ const reviewsData = [
     review: "XmlMaster допоміг нам оптимізувати процеси обробки даних. Економимо години роботи щотижня!",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1" // Gray and black laptop
   }
+
+  {
+    id: 6,
+    name: "Тарас Кравчук",
+    company: "Digital Solutions",
+    review: "XmlMaster допоміг нам оптимізувати процеси обробки даних. Економимо години роботи щотижня!",
+    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1" // Gray and black laptop
+  }
 ];
 
 const Dashboard: React.FC = () => {
