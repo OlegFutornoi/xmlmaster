@@ -25,29 +25,42 @@ const data = [
   { name: 'Jul', value: 3490, users: 4300, visits: 2100 },
 ];
 
-// Sample reviews data for slider
-// IMPORTANT: Replace these URLs with your own photos of user reviews
+// Sample reviews data for slider with placeholder images
 const reviewsData = [
   {
     id: 1,
     name: "Оксана Петренко",
     company: "IT Solutions",
     review: "XmlMaster значно покращив наш робочий процес. Інструмент простий у використанні та дуже ефективний!",
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7" // REPLACE THIS URL WITH YOUR OWN IMAGE
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" // Laptop computer
   },
   {
     id: 2,
     name: "Іван Ковальчук",
     company: "WebDev Ukraine",
     review: "Завдяки XmlMaster ми збільшили продуктивність на 40%. Чудовий інструмент для роботи з XML!",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // REPLACE THIS URL WITH YOUR OWN IMAGE
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475" // Circuit board
   },
   {
     id: 3,
     name: "Марія Шевченко",
     company: "Data Analytics Pro",
     review: "XmlMaster - найкращий інструмент для роботи з XML, який я коли-небудь використовувала. Рекомендую!",
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04" // REPLACE THIS URL WITH YOUR OWN IMAGE
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6" // Programming monitor
+  },
+  {
+    id: 4,
+    name: "Петро Мельник",
+    company: "Tech Innovations",
+    review: "Використовуємо XmlMaster вже 2 роки, і це найкраще рішення для нашої команди. Відмінна підтримка!",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" // Person using MacBook
+  },
+  {
+    id: 5,
+    name: "Наталія Кравчук",
+    company: "Digital Solutions",
+    review: "XmlMaster допоміг нам оптимізувати процеси обробки даних. Економимо години роботи щотижня!",
+    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1" // Gray and black laptop
   }
 ];
 
@@ -155,10 +168,6 @@ const Dashboard: React.FC = () => {
                 {reviewsData.map((review, index) => (
                   <div key={review.id} className="min-w-full flex flex-col md:flex-row items-center p-4 gap-4">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200">
-                      {/* 
-                      IMPORTANT: Replace the image URLs in the reviewsData array at the top of this file 
-                      with your own images. The current URLs are just placeholders.
-                      */}
                       <img 
                         src={review.image} 
                         alt={`${review.name} from ${review.company}`} 
