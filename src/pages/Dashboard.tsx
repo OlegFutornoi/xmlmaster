@@ -14,6 +14,7 @@ import {
   Tooltip, 
   ResponsiveContainer 
 } from 'recharts';
+import { Download, Check, TrendingUp, MessageSquare } from 'lucide-react';
 
 const data = [
   { name: 'Jan', value: 4000, users: 2400, visits: 2400 },
@@ -38,41 +39,53 @@ const Dashboard: React.FC = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="backdrop-blur-sm bg-white/50">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Download className="h-4 w-4 mr-2 text-blue-500" />
+              Активні завантаження
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
-            <p className="text-xs text-muted-foreground mt-1">+20.1% from last month</p>
+            <div className="text-2xl font-bold">1,521</div>
+            <p className="text-xs text-muted-foreground mt-1">+20.1% від минулого місяця</p>
           </CardContent>
         </Card>
         
         <Card className="backdrop-blur-sm bg-white/50">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">New Users</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <Check className="h-4 w-4 mr-2 text-green-500" />
+              Успішні продавці
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+2,350</div>
-            <p className="text-xs text-muted-foreground mt-1">+10.1% from last month</p>
+            <div className="text-2xl font-bold">729</div>
+            <p className="text-xs text-muted-foreground mt-1">+10.1% від минулого місяця</p>
           </CardContent>
         </Card>
         
         <Card className="backdrop-blur-sm bg-white/50">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Active Sessions</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <TrendingUp className="h-4 w-4 mr-2 text-indigo-500" />
+              Дохід більше 1000 $
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+12,234</div>
-            <p className="text-xs text-muted-foreground mt-1">+19% from last month</p>
+            <div className="text-2xl font-bold">597</div>
+            <p className="text-xs text-muted-foreground mt-1">+19% від минулого місяця</p>
           </CardContent>
         </Card>
         
         <Card className="backdrop-blur-sm bg-white/50">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Conversion Rate</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+              <MessageSquare className="h-4 w-4 mr-2 text-amber-500" />
+              Відгуки клієнтів
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">24.5%</div>
-            <p className="text-xs text-muted-foreground mt-1">+4.3% from last month</p>
+            <div className="text-2xl font-bold">1,298</div>
+            <p className="text-xs text-muted-foreground mt-1">+4.3% від минулого місяця</p>
           </CardContent>
         </Card>
       </div>
@@ -80,7 +93,7 @@ const Dashboard: React.FC = () => {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
         <Card className="lg:col-span-4 backdrop-blur-sm bg-white/50">
           <CardHeader>
-            <CardTitle>Revenue Overview</CardTitle>
+            <CardTitle>Огляд доходів</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -105,7 +118,7 @@ const Dashboard: React.FC = () => {
         
         <Card className="lg:col-span-3 backdrop-blur-sm bg-white/50">
           <CardHeader>
-            <CardTitle>User Activity</CardTitle>
+            <CardTitle>Активність користувачів</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -125,7 +138,7 @@ const Dashboard: React.FC = () => {
       
       <Card className="backdrop-blur-sm bg-white/50">
         <CardHeader>
-          <CardTitle>Performance Metrics</CardTitle>
+          <CardTitle>Показники ефективності</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
