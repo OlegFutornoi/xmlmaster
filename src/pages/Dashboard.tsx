@@ -6,16 +6,15 @@ import {
   Bar, 
   LineChart, 
   Line, 
-  AreaChart, 
-  Area,
   XAxis, 
   YAxis, 
   CartesianGrid, 
   Tooltip, 
   ResponsiveContainer 
 } from 'recharts';
-import { Download, Check, TrendingUp, MessageSquare } from 'lucide-react';
+import { Download, Check, TrendingUp, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Sample data for charts
 const data = [
   { name: 'Jan', value: 4000, users: 2400, visits: 2400 },
   { name: 'Feb', value: 3000, users: 1398, visits: 2210 },
@@ -26,7 +25,43 @@ const data = [
   { name: 'Jul', value: 3490, users: 4300, visits: 2100 },
 ];
 
+// Sample reviews data for slider
+// IMPORTANT: Replace these URLs with your own photos of user reviews
+const reviewsData = [
+  {
+    id: 1,
+    name: "Оксана Петренко",
+    company: "IT Solutions",
+    review: "XmlMaster значно покращив наш робочий процес. Інструмент простий у використанні та дуже ефективний!",
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7" // REPLACE THIS URL WITH YOUR OWN IMAGE
+  },
+  {
+    id: 2,
+    name: "Іван Ковальчук",
+    company: "WebDev Ukraine",
+    review: "Завдяки XmlMaster ми збільшили продуктивність на 40%. Чудовий інструмент для роботи з XML!",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" // REPLACE THIS URL WITH YOUR OWN IMAGE
+  },
+  {
+    id: 3,
+    name: "Марія Шевченко",
+    company: "Data Analytics Pro",
+    review: "XmlMaster - найкращий інструмент для роботи з XML, який я коли-небудь використовувала. Рекомендую!",
+    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04" // REPLACE THIS URL WITH YOUR OWN IMAGE
+  }
+];
+
 const Dashboard: React.FC = () => {
+  const [currentReview, setCurrentReview] = React.useState(0);
+
+  const nextReview = () => {
+    setCurrentReview((prev) => (prev === reviewsData.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevReview = () => {
+    setCurrentReview((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1));
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -91,27 +126,69 @@ const Dashboard: React.FC = () => {
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+        {/* User Reviews Slider - replacing the revenue overview chart */}
         <Card className="lg:col-span-4 backdrop-blur-sm bg-white/50">
           <CardHeader>
-            <CardTitle>Огляд доходів</CardTitle>
+            <CardTitle>Відгуки користувачів</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f1f1" />
-                  <XAxis dataKey="name" stroke="#888888" fontSize={12} />
-                  <YAxis stroke="#888888" fontSize={12} />
-                  <Tooltip />
-                  <Area
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#000"
-                    strokeWidth={2}
-                    fill="rgba(0, 0, 0, 0.1)"
+            <div className="relative h-[300px] overflow-hidden">
+              {/* Slider navigation buttons */}
+              <button 
+                onClick={prevReview} 
+                className="absolute left-2 top-1/2 z-10 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition-all"
+                aria-label="Previous review"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              
+              <button 
+                onClick={nextReview} 
+                className="absolute right-2 top-1/2 z-10 transform -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white transition-all"
+                aria-label="Next review"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+              
+              {/* Slider content */}
+              <div className="flex h-full transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${currentReview * 100}%)` }}>
+                {reviewsData.map((review, index) => (
+                  <div key={review.id} className="min-w-full flex flex-col md:flex-row items-center p-4 gap-4">
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200">
+                      {/* 
+                      IMPORTANT: Replace the image URLs in the reviewsData array at the top of this file 
+                      with your own images. The current URLs are just placeholders.
+                      */}
+                      <img 
+                        src={review.image} 
+                        alt={`${review.name} from ${review.company}`} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 flex flex-col items-center md:items-start">
+                      <blockquote className="text-lg font-medium italic mb-4 text-center md:text-left">
+                        "{review.review}"
+                      </blockquote>
+                      <div className="mt-auto">
+                        <p className="font-semibold">{review.name}</p>
+                        <p className="text-sm text-muted-foreground">{review.company}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Slider indicators */}
+              <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                {reviewsData.map((_, index) => (
+                  <button 
+                    key={index} 
+                    onClick={() => setCurrentReview(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${index === currentReview ? 'bg-primary w-4' : 'bg-gray-300'}`}
+                    aria-label={`Go to review ${index + 1}`}
                   />
-                </AreaChart>
-              </ResponsiveContainer>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>
