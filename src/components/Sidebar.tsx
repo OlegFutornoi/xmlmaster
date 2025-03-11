@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
+  LayoutDashboard,
   Download, 
   HelpCircle, 
   Receipt, 
@@ -25,7 +27,7 @@ const getMenuItems = (): MenuItem[] => [
   {
     titleKey: 'xmlmaster',
     path: '/',
-    icon: Download
+    icon: LayoutDashboard
   },
   {
     titleKey: 'download',

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { MenuItem } from './Sidebar';
 import { 
+  LayoutDashboard,
   Download, 
   HelpCircle, 
   Receipt,
@@ -22,7 +23,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
     {
       titleKey: 'xmlmaster',
       path: '/',
-      icon: Download
+      icon: LayoutDashboard
     },
     {
       titleKey: 'download',
