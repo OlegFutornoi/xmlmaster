@@ -9,38 +9,43 @@ import {
   Users, 
   FileText,
 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/config/localeSettings';
 
 interface FooterProps {
   className?: string;
 }
 
-const menuItems: MenuItem[] = [
-  {
-    title: 'XmlMaster',
-    path: '/',
-    icon: LayoutDashboard
-  },
-  {
-    title: 'Profile',
-    path: '/profile',
-    icon: Users
-  },
-  {
-    title: 'Reports',
-    path: '/reports',
-    icon: FileText
-  },
-  {
-    title: 'Settings',
-    path: '/settings',
-    icon: Settings
-  }
-];
-
 const Footer: React.FC<FooterProps> = ({ className }) => {
+  const { language } = useLanguage();
+  const t = translations[language].menu;
+  
+  const menuItems: MenuItem[] = [
+    {
+      titleKey: 'xmlmaster',
+      path: '/',
+      icon: LayoutDashboard
+    },
+    {
+      titleKey: 'download',
+      path: '/profile',
+      icon: Users
+    },
+    {
+      titleKey: 'pricing',
+      path: '/reports',
+      icon: FileText
+    },
+    {
+      titleKey: 'help',
+      path: '/settings',
+      icon: Settings
+    }
+  ];
+
   return (
     <footer className={cn(
-      "w-full border-t border-gray-100 py-6 bg-white bg-opacity-90 backdrop-blur-md mt-auto",
+      "w-full border-t border-gray-100 py-6 bg-white bg-opacity-90 backdrop-blur-md mt-auto dark:bg-sidebar dark:border-sidebar-border",
       className
     )}>
       <div className="max-w-7xl mx-auto px-6">
@@ -59,7 +64,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                 className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 flex items-center"
               >
                 <item.icon className="h-3 w-3 mr-1" />
-                <span>{item.title}</span>
+                <span>{t[item.titleKey]}</span>
               </Link>
             ))}
           </nav>
