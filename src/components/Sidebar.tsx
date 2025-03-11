@@ -1,11 +1,9 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  LayoutDashboard, 
-  Settings, 
-  Users, 
-  FileText, 
+  Download, 
+  HelpCircle, 
+  Receipt, 
   ChevronLeft,
   Menu
 } from 'lucide-react';
@@ -27,22 +25,22 @@ const getMenuItems = (): MenuItem[] => [
   {
     titleKey: 'xmlmaster',
     path: '/',
-    icon: LayoutDashboard
+    icon: Download
   },
   {
     titleKey: 'download',
     path: '/profile',
-    icon: Users
+    icon: Download
   },
   {
     titleKey: 'pricing',
     path: '/reports',
-    icon: FileText
+    icon: Receipt
   },
   {
     titleKey: 'help',
     path: '/settings',
-    icon: Settings
+    icon: HelpCircle
   }
 ];
 

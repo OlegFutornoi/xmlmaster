@@ -1,13 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { MenuItem } from './Sidebar';
 import { 
-  LayoutDashboard, 
-  Settings, 
-  Users, 
-  FileText,
+  Download, 
+  HelpCircle, 
+  Receipt,
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/config/localeSettings';
@@ -24,22 +22,22 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
     {
       titleKey: 'xmlmaster',
       path: '/',
-      icon: LayoutDashboard
+      icon: Download
     },
     {
       titleKey: 'download',
       path: '/profile',
-      icon: Users
+      icon: Download
     },
     {
       titleKey: 'pricing',
       path: '/reports',
-      icon: FileText
+      icon: Receipt
     },
     {
       titleKey: 'help',
       path: '/settings',
-      icon: Settings
+      icon: HelpCircle
     }
   ];
 
