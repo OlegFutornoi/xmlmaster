@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Home, 
   LayoutDashboard, 
   Settings, 
   Users, 
@@ -11,35 +10,37 @@ import {
   Menu
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/config/localeSettings';
 
 interface SidebarProps {
   className?: string;
 }
 
 export interface MenuItem {
-  title: string;
+  titleKey: string;
   path: string;
   icon: React.ElementType;
 }
 
-const menuItems: MenuItem[] = [
+const getMenuItems = (): MenuItem[] => [
   {
-    title: 'XmlMaster',
+    titleKey: 'xmlmaster',
     path: '/',
     icon: LayoutDashboard
   },
   {
-    title: 'Profile',
+    titleKey: 'download',
     path: '/profile',
     icon: Users
   },
   {
-    title: 'Reports',
+    titleKey: 'pricing',
     path: '/reports',
     icon: FileText
   },
   {
-    title: 'Settings',
+    titleKey: 'help',
     path: '/settings',
     icon: Settings
   }
@@ -47,6 +48,9 @@ const menuItems: MenuItem[] = [
 
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language].menu;
+  const menuItems = getMenuItems();
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -84,7 +88,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                   )}
                 >
                   <item.icon className={cn("h-5 w-5", collapsed ? "mx-auto" : "mr-3")} />
-                  {!collapsed && <span className="text-sm font-medium">{item.title}</span>}
+                  {!collapsed && <span className="text-sm font-medium">{t[item.titleKey]}</span>}
                 </Link>
               </li>
             ))}

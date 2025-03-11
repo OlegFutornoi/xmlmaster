@@ -13,6 +13,9 @@ import {
   ResponsiveContainer 
 } from 'recharts';
 import { Download, Check, TrendingUp, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/config/localeSettings';
+import reviewsSettingsLocale from '@/config/reviewsSettings';
 
 // Sample data for charts
 const data = [
@@ -25,70 +28,27 @@ const data = [
   { name: 'Jul', value: 3490, users: 4300, visits: 2100 },
 ];
 
-// Sample reviews data for slider with placeholder images
-const reviewsData = [
-  {
-    id: 1,
-    name: "Оксана Петренко",
-    company: "IT Solutions",
-    review: "XmlMaster значно покращив наш робочий процес. Інструмент простий у використанні та дуже ефективний!",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" // Laptop computer
-  },
-  {
-    id: 2,
-    name: "Іван Ковальчук",
-    company: "WebDev Ukraine",
-    review: "Завдяки XmlMaster ми збільшили продуктивність на 40%. Чудовий інструмент для роботи з XML!",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475" // Circuit board
-  },
-  {
-    id: 3,
-    name: "Марія Шевченко",
-    company: "Data Analytics Pro",
-    review: "XmlMaster - найкращий інструмент для роботи з XML, який я коли-небудь використовувала. Рекомендую!",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6" // Programming monitor
-  },
-  {
-    id: 4,
-    name: "Петро Мельник",
-    company: "Tech Innovations",
-    review: "Використовуємо XmlMaster вже 2 роки, і це найкраще рішення для нашої команди. Відмінна підтримка!",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d" // Person using MacBook
-  },
-  {
-    id: 5,
-    name: "Наталія Кравчук",
-    company: "Digital Solutions",
-    review: "XmlMaster допоміг нам оптимізувати процеси обробки даних. Економимо години роботи щотижня!",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1" // Gray and black laptop
-  }
-
-  {
-    id: 6,
-    name: "Тарас Кравчук",
-    company: "Digital Solutions",
-    review: "XmlMaster допоміг нам оптимізувати процеси обробки даних. Економимо години роботи щотижня!",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1" // Gray and black laptop
-  }
-];
-
 const Dashboard: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations[language].dashboard;
+  const reviews = reviewsSettingsLocale[language].reviews;
+  
   const [currentReview, setCurrentReview] = React.useState(0);
 
   const nextReview = () => {
-    setCurrentReview((prev) => (prev === reviewsData.length - 1 ? 0 : prev + 1));
+    setCurrentReview((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
   };
 
   const prevReview = () => {
-    setCurrentReview((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1));
+    setCurrentReview((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
   };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">XmlMaster</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{t.title}</h1>
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-muted-foreground">Last updated: Today at 09:15 AM</span>
+          <span className="text-sm text-muted-foreground">{t.lastUpdated}: Today at 09:15 AM</span>
         </div>
       </div>
       
@@ -97,12 +57,12 @@ const Dashboard: React.FC = () => {
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
               <Download className="h-4 w-4 mr-2 text-blue-500" />
-              Активні завантаження
+              {t.activeDownloads}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,521</div>
-            <p className="text-xs text-muted-foreground mt-1">+20.1% від минулого місяця</p>
+            <p className="text-xs text-muted-foreground mt-1">+20.1% {t.fromLastMonth}</p>
           </CardContent>
         </Card>
         
@@ -110,12 +70,12 @@ const Dashboard: React.FC = () => {
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
               <Check className="h-4 w-4 mr-2 text-green-500" />
-              Успішні продавці
+              {t.successfulSellers}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">729</div>
-            <p className="text-xs text-muted-foreground mt-1">+10.1% від минулого місяця</p>
+            <p className="text-xs text-muted-foreground mt-1">+10.1% {t.fromLastMonth}</p>
           </CardContent>
         </Card>
         
@@ -123,12 +83,12 @@ const Dashboard: React.FC = () => {
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
               <TrendingUp className="h-4 w-4 mr-2 text-indigo-500" />
-              Дохід більше 1000 $
+              {t.revenueOver1000}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">597</div>
-            <p className="text-xs text-muted-foreground mt-1">+19% від минулого місяця</p>
+            <p className="text-xs text-muted-foreground mt-1">+19% {t.fromLastMonth}</p>
           </CardContent>
         </Card>
         
@@ -136,12 +96,12 @@ const Dashboard: React.FC = () => {
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
               <MessageSquare className="h-4 w-4 mr-2 text-amber-500" />
-              Відгуки клієнтів
+              {t.customerReviews}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">1,298</div>
-            <p className="text-xs text-muted-foreground mt-1">+4.3% від минулого місяця</p>
+            <p className="text-xs text-muted-foreground mt-1">+4.3% {t.fromLastMonth}</p>
           </CardContent>
         </Card>
       </div>
@@ -150,7 +110,7 @@ const Dashboard: React.FC = () => {
         {/* User Reviews Slider - replacing the revenue overview chart */}
         <Card className="lg:col-span-4 backdrop-blur-sm bg-white/50">
           <CardHeader>
-            <CardTitle>Відгуки користувачів</CardTitle>
+            <CardTitle>{t.customerReviews}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="relative h-[300px] overflow-hidden">
@@ -173,7 +133,7 @@ const Dashboard: React.FC = () => {
               
               {/* Slider content */}
               <div className="flex h-full transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${currentReview * 100}%)` }}>
-                {reviewsData.map((review, index) => (
+                {reviews.map((review) => (
                   <div key={review.id} className="min-w-full flex flex-col md:flex-row items-center p-4 gap-4">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex-shrink-0 border-2 border-gray-200">
                       <img 
@@ -197,7 +157,7 @@ const Dashboard: React.FC = () => {
               
               {/* Slider indicators */}
               <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-                {reviewsData.map((_, index) => (
+                {reviews.map((_, index) => (
                   <button 
                     key={index} 
                     onClick={() => setCurrentReview(index)}
@@ -212,7 +172,7 @@ const Dashboard: React.FC = () => {
         
         <Card className="lg:col-span-3 backdrop-blur-sm bg-white/50">
           <CardHeader>
-            <CardTitle>Активність користувачів</CardTitle>
+            <CardTitle>{t.userActivity}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-[300px]">
@@ -232,7 +192,7 @@ const Dashboard: React.FC = () => {
       
       <Card className="backdrop-blur-sm bg-white/50">
         <CardHeader>
-          <CardTitle>Показники ефективності</CardTitle>
+          <CardTitle>{t.performanceMetrics}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
