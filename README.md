@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to your  project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/b9885906-c276-45c1-b510-b8ae241a0605
+**URL**: https://preview--xmlmaster.lovable.app/
 
 ## How can I edit this code?
 
@@ -10,9 +10,9 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b9885906-c276-45c1-b510-b8ae241a0605) and start prompting.
+Visit the [Lovable Project](https://preview--xmlmaster.lovable.app/) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+Changes made via Lovable will be committed autically to this repo.
 
 **Use your preferred IDE**
 
@@ -62,7 +62,7 @@ This project is built with .
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/b9885906-c276-45c1-b510-b8ae241a0605) and click on Share -> Publish.
+
 
 ## I want to use a custom domain - is that possible?
 
