@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
@@ -16,6 +15,7 @@ import { Download, Check, TrendingUp, MessageSquare, ChevronLeft, ChevronRight }
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/config/localeSettings';
 import reviewsSettingsLocale from '@/config/reviewsSettings';
+import dashboardSettingsLocale from '@/config/dashboardSettings';
 
 // Sample data for charts
 const data = [
@@ -32,6 +32,7 @@ const Dashboard: React.FC = () => {
   const { language } = useLanguage();
   const t = translations[language].dashboard;
   const reviews = reviewsSettingsLocale[language].reviews;
+  const dashboardSettings = dashboardSettingsLocale[language];
   
   const [currentReview, setCurrentReview] = React.useState(0);
 
@@ -41,6 +42,17 @@ const Dashboard: React.FC = () => {
 
   const prevReview = () => {
     setCurrentReview((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
+  };
+
+  // Helper function to get the icon component
+  const getIconComponent = (iconName: string) => {
+    const icons = {
+      Download: Download,
+      Check: Check,
+      TrendingUp: TrendingUp,
+      MessageSquare: MessageSquare
+    };
+    return icons[iconName as keyof typeof icons] || Download;
   };
 
   return (
@@ -53,57 +65,24 @@ const Dashboard: React.FC = () => {
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="backdrop-blur-sm bg-white/50">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-              <Download className="h-4 w-4 mr-2 text-blue-500" />
-              {t.activeDownloads}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,521</div>
-            <p className="text-xs text-muted-foreground mt-1">+20.1% {t.fromLastMonth}</p>
-          </CardContent>
-        </Card>
-        
-        <Card className="backdrop-blur-sm bg-white/50">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-              <Check className="h-4 w-4 mr-2 text-green-500" />
-              {t.successfulSellers}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">729</div>
-            <p className="text-xs text-muted-foreground mt-1">+10.1% {t.fromLastMonth}</p>
-          </CardContent>
-        </Card>
-        
-        <Card className="backdrop-blur-sm bg-white/50">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-              <TrendingUp className="h-4 w-4 mr-2 text-indigo-500" />
-              {t.revenueOver1000}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">597</div>
-            <p className="text-xs text-muted-foreground mt-1">+19% {t.fromLastMonth}</p>
-          </CardContent>
-        </Card>
-        
-        <Card className="backdrop-blur-sm bg-white/50">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
-              <MessageSquare className="h-4 w-4 mr-2 text-amber-500" />
-              {t.customerReviews}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,298</div>
-            <p className="text-xs text-muted-foreground mt-1">+4.3% {t.fromLastMonth}</p>
-          </CardContent>
-        </Card>
+        {dashboardSettings.cards.map((card) => {
+          const IconComponent = getIconComponent(card.icon);
+          
+          return (
+            <Card key={card.id} className="backdrop-blur-sm bg-white/50">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center">
+                  <IconComponent className={`h-4 w-4 mr-2 text-${card.color}`} />
+                  {t[card.titleKey]}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{card.value}</div>
+                <p className="text-xs text-muted-foreground mt-1">{card.change} {t.fromLastMonth}</p>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
