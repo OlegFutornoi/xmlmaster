@@ -5,7 +5,7 @@ import { translations } from '@/config/localeSettings';
 import downloadSettings from '@/config/downloadSettings';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Apple, Windows, Terminal, Smartphone } from 'lucide-react';
+import { Apple, Monitor, Terminal, Smartphone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Download: React.FC = () => {
@@ -17,11 +17,11 @@ const Download: React.FC = () => {
   const getIconComponent = (iconName: string) => {
     const icons: Record<string, React.ReactNode> = {
       'Apple': <Apple className="h-5 w-5" />,
-      'Windows': <Windows className="h-5 w-5" />,
+      'Monitor': <Monitor className="h-5 w-5" />,
       'Terminal': <Terminal className="h-5 w-5" />,
       'Smartphone': <Smartphone className="h-5 w-5" />
     };
-    return icons[iconName] || <Windows className="h-5 w-5" />;
+    return icons[iconName] || <Monitor className="h-5 w-5" />;
   };
 
   const handleDownload = (platform: string, link: string) => {

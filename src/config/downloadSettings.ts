@@ -24,7 +24,7 @@ const downloadSettings: Record<string, DownloadSettings> = {
         id: "windows",
         platform: "Windows",
         link: "https://example.com/download/windows",
-        icon: "Windows"
+        icon: "Monitor"
       },
       {
         id: "mac",
@@ -61,7 +61,7 @@ const downloadSettings: Record<string, DownloadSettings> = {
         id: "windows",
         platform: "Windows",
         link: "https://example.com/download/windows",
-        icon: "Windows"
+        icon: "Monitor"
       },
       {
         id: "mac",
