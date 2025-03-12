@@ -6,9 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
-import Reports from "./pages/Reports";
-import Settings from "./pages/Settings";
+import Download from "./pages/Profile"; // Renamed but using the same component
+import Tariffs from "./pages/Reports"; // Renamed but using the same component
+import Introduction from "./pages/Settings"; // Renamed but using the same component
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -26,9 +26,9 @@ const App = () => (
             <Routes>
               <Route path="/" element={<DashboardLayout />}>
                 <Route index element={<Dashboard />} />
-                <Route path="profile" element={<Profile />} />
-                <Route path="reports" element={<Reports />} />
-                <Route path="settings" element={<Settings />} />
+                <Route path="download" element={<Download />} />
+                <Route path="tariffs" element={<Tariffs />} />
+                <Route path="introduction" element={<Introduction />} />
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>

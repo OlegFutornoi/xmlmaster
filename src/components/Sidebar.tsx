@@ -31,17 +31,17 @@ const getMenuItems = (): MenuItem[] => [
   },
   {
     titleKey: 'download',
-    path: '/profile',
+    path: '/download',
     icon: Download
   },
   {
     titleKey: 'pricing',
-    path: '/reports',
+    path: '/tariffs',
     icon: Receipt
   },
   {
     titleKey: 'help',
-    path: '/settings',
+    path: '/introduction',
     icon: HelpCircle
   }
 ];
