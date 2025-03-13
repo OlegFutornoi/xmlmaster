@@ -12,14 +12,14 @@ interface ColorScheme {
 
 export const colorSchemes: Record<string, ColorScheme> = {
   default: {
-    primary: "#6a5acd", // SlateBlue
-    secondary: "#e6c619", // Gold
-    accent: "#2ec4b6", // Teal
+    primary: "#051A09", // Dark Green - from user
+    secondary: "#DDE7DD", // Light Green - from user
+    accent: "#F3F2E7", // Cream - from user
     neutral: "#4a5568", // Gray
-    background: "#f7fafc", // Light Gray
-    text: "#2d3748", // Dark Gray
-    border: "#e2e8f0", // Light Gray
-    hover: "#f1f5f9", // Lightest Gray
+    background: "#F3F2E7", // Cream - from user
+    text: "#051A09", // Dark Green - from user
+    border: "#DDE7DD", // Light Green - from user
+    hover: "#EAE9DE", // Lighter Cream
   },
   ocean: {
     primary: "#0ea5e9", // Sky Blue

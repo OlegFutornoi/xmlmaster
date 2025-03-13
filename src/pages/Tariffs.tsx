@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Star, CreditCard, Shield } from "lucide-react";
@@ -10,7 +10,6 @@ import { translations } from '@/config/localeSettings';
 const Tariffs = () => {
   const { language } = useLanguage();
   const t = translations[language].menu;
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly' | 'lifetime'>('monthly');
 
   return (
     <div className="container max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
