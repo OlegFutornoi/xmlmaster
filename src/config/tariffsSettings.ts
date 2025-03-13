@@ -7,6 +7,7 @@ export interface TariffPlan {
   description: string;
   features: string[];
   popular?: boolean;
+  paymentUrl?: string; // New parameter for payment link
 }
 
 export const tariffPlans: TariffPlan[] = [
@@ -22,7 +23,8 @@ export const tariffPlans: TariffPlan[] = [
       "Базова технічна підтримка",
       "Доступ до бібліотеки XML шаблонів",
       "Обробка до 1000 файлів на місяць"
-    ]
+    ],
+    paymentUrl: "#" // Placeholder URL that you can update later
   },
   {
     id: "yearly",
@@ -37,7 +39,8 @@ export const tariffPlans: TariffPlan[] = [
       "Обробка до 5000 файлів на місяць",
       "Резервне копіювання даних"
     ],
-    popular: true
+    popular: true,
+    paymentUrl: "#" // Placeholder URL that you can update later
   },
   {
     id: "lifetime",
@@ -52,6 +55,7 @@ export const tariffPlans: TariffPlan[] = [
       "Необмежена кількість файлів",
       "Доступ до ексклюзивних функцій",
       "Персональний консультант"
-    ]
+    ],
+    paymentUrl: "#" // Placeholder URL that you can update later
   }
 ];

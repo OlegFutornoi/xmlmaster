@@ -48,9 +48,11 @@ const Tariffs = () => {
               </ul>
             </CardContent>
             <CardFooter className="pt-4">
-              <Button className="w-full gap-2" size="lg">
-                <CreditCard className="h-5 w-5" />
-                Обрати план
+              <Button className="w-full gap-2" size="lg" asChild>
+                <a href={plan.paymentUrl}>
+                  <CreditCard className="h-5 w-5" />
+                  Обрати план
+                </a>
               </Button>
             </CardFooter>
           </Card>
