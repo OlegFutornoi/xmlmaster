@@ -41,7 +41,7 @@ const getMenuItems = (): MenuItem[] => [
   },
   {
     titleKey: 'help',
-    path: '/introduction',
+    path: '/help',  // Updated to point to the new help page
     icon: HelpCircle
   }
 ];

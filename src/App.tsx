@@ -7,8 +7,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Download from "./pages/Download";
-import Tariffs from "./pages/Tariffs"; // Updated import
+import Tariffs from "./pages/Tariffs";
 import Introduction from "./pages/Settings"; // Renamed but using the same component
+import Help from "./pages/Help"; // New import for Help page
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -29,6 +30,7 @@ const App = () => (
                 <Route path="download" element={<Download />} />
                 <Route path="tariffs" element={<Tariffs />} />
                 <Route path="introduction" element={<Introduction />} />
+                <Route path="help" element={<Help />} /> {/* New route for Help */}
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
