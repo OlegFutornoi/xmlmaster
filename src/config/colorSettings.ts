@@ -4,32 +4,52 @@ interface ColorScheme {
   secondary: string;
   accent: string;
   neutral: string;
+  background: string;
+  text: string;
+  border: string;
+  hover: string;
 }
 
 export const colorSchemes: Record<string, ColorScheme> = {
   default: {
-    primary: "#6366f1", // Indigo
-    secondary: "#f59e0b", // Amber
+    primary: "#6a5acd", // SlateBlue
+    secondary: "#e6c619", // Gold
+    accent: "#2ec4b6", // Teal
+    neutral: "#4a5568", // Gray
+    background: "#f7fafc", // Light Gray
+    text: "#2d3748", // Dark Gray
+    border: "#e2e8f0", // Light Gray
+    hover: "#f1f5f9", // Lightest Gray
+  },
+  ocean: {
+    primary: "#0ea5e9", // Sky Blue
+    secondary: "#f97316", // Orange
     accent: "#10b981", // Emerald
-    neutral: "#6b7280", // Gray
-  },
-  blue: {
-    primary: "#3b82f6", // Blue
-    secondary: "#ec4899", // Pink
-    accent: "#22d3ee", // Cyan
-    neutral: "#78716c", // Stone
-  },
-  purple: {
-    primary: "#8b5cf6", // Violet
-    secondary: "#f43f5e", // Rose
-    accent: "#14b8a6", // Teal
     neutral: "#64748b", // Slate
+    background: "#ecfdf5", // Light Cyan
+    text: "#0f172a", // Dark Blue
+    border: "#e0f2fe", // Light Blue
+    hover: "#f0fdfa", // Light Teal
   },
-  green: {
-    primary: "#10b981", // Emerald
-    secondary: "#8b5cf6", // Violet
-    accent: "#f59e0b", // Amber
+  sunset: {
+    primary: "#d946ef", // Fuchsia
+    secondary: "#f59e0b", // Amber
+    accent: "#8b5cf6", // Violet
     neutral: "#6b7280", // Gray
+    background: "#fff1f2", // Light Pink
+    text: "#1e293b", // Dark Slate
+    border: "#fce7f3", // Light Pink
+    hover: "#faf5ff", // Light Purple
+  },
+  forest: {
+    primary: "#059669", // Emerald
+    secondary: "#f59e0b", // Amber
+    accent: "#0369a1", // Blue
+    neutral: "#78716c", // Stone
+    background: "#f0fdf4", // Light Green
+    text: "#1e3a8a", // Dark Blue
+    border: "#d1fae5", // Light Green
+    hover: "#f8fafc", // Light Blue
   }
 };
 
