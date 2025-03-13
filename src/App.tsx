@@ -6,8 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
-import Download from "./pages/Download"; // Updated import
-import Tariffs from "./pages/Reports"; // Renamed but using the same component
+import Download from "./pages/Download";
+import Tariffs from "./pages/Tariffs"; // Updated import
 import Introduction from "./pages/Settings"; // Renamed but using the same component
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./context/LanguageContext";
