@@ -10,6 +10,7 @@ export interface Feature {
 
 interface FeaturesSettings {
   features: Feature[];
+  showSliderControls?: boolean; // Override automatic control visibility
 }
 
 const featuresSettingsLocale: Record<string, FeaturesSettings> = {

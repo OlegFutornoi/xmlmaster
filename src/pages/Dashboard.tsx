@@ -14,7 +14,9 @@ const Dashboard: React.FC = () => {
   const t = translations[language].dashboard;
   const reviews = reviewsSettingsLocale[language].reviews;
   const dashboardSettings = dashboardSettingsLocale[language];
-  const features = featuresSettingsLocale[language].features;
+  const featuresSettings = featuresSettingsLocale[language];
+  const features = featuresSettings.features;
+  const showSliderControls = featuresSettings.showSliderControls;
 
   return (
     <div className="space-y-6">
@@ -26,7 +28,7 @@ const Dashboard: React.FC = () => {
       </div>
       
       <StatsCards cards={dashboardSettings.cards} />
-      <Features features={features} />
+      <Features features={features} showSliderControls={showSliderControls} />
       <CustomerReviews reviews={reviews} />
     </div>
   );
