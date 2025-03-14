@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/config/localeSettings';
 import { Review } from '@/config/reviewsSettings';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 interface CustomerReviewsProps {
   reviews: Review[];
@@ -49,12 +50,14 @@ const CustomerReviews: React.FC<CustomerReviewsProps> = ({ reviews }) => {
           <div className="flex h-full transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${currentReview * 100}%)` }}>
             {reviews.map((review) => (
               <div key={review.id} className="min-w-full flex items-center p-8 gap-8">
-                <div className="w-96 h-80 rounded-lg overflow-hidden flex-shrink-0 border-2 border-gray-200">
-                  <img 
-                    src={review.image} 
-                    alt={`${review.name} from ${review.company}`} 
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-96 flex-shrink-0 border-2 border-gray-200 rounded-lg overflow-hidden">
+                  <AspectRatio ratio={16/9}>
+                    <img 
+                      src={review.image} 
+                      alt={`${review.name} from ${review.company}`} 
+                      className="w-full h-full object-cover"
+                    />
+                  </AspectRatio>
                 </div>
                 <div className="flex-1 flex flex-col">
                   <blockquote className="text-2xl font-medium italic mb-8">
@@ -86,4 +89,3 @@ const CustomerReviews: React.FC<CustomerReviewsProps> = ({ reviews }) => {
 };
 
 export default CustomerReviews;
-

@@ -26,11 +26,10 @@ const Dashboard: React.FC = () => {
       </div>
       
       <StatsCards cards={dashboardSettings.cards} />
-      <CustomerReviews reviews={reviews} />
       <Features features={features} />
+      <CustomerReviews reviews={reviews} />
     </div>
   );
 };
 
 export default Dashboard;
-
