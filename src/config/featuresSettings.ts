@@ -4,6 +4,7 @@ export interface Feature {
   title: string;
   description: string;
   image: string;
+  videoUrl?: string; // YouTube video ID
   features: string[];
 }
 
@@ -19,6 +20,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "XML Processing",
         description: "Advanced XML processing capabilities with intuitive interface",
         image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Fast XML validation",
           "Schema support",
@@ -32,6 +34,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "Data Integration",
         description: "Seamless integration with various data sources",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Database connectivity",
           "REST API support",
@@ -45,6 +48,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "Security",
         description: "Enterprise-grade security features",
         image: "https://images.unsplash.com/photo-1639322537228-f710d846310a",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Encryption",
           "Access control",
@@ -62,6 +66,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "Обробка XML",
         description: "Розширені можливості обробки XML з інтуїтивним інтерфейсом",
         image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Швидка валідація XML",
           "Підтримка схем",
@@ -75,6 +80,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "Інтеграція даних",
         description: "Безшовна інтеграція з різними джерелами даних",
         image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Підключення до баз даних",
           "Підтримка REST API",
@@ -88,6 +94,7 @@ const featuresSettingsLocale: Record<string, FeaturesSettings> = {
         title: "Безпека",
         description: "Функції безпеки корпоративного рівня",
         image: "https://images.unsplash.com/photo-1639322537228-f710d846310a",
+        videoUrl: "dQw4w9WgXcQ", // Example YouTube video ID
         features: [
           "Шифрування",
           "Контроль доступу",
