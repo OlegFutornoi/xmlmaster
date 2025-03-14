@@ -8,9 +8,11 @@ import featuresSettingsLocale from '@/config/featuresSettings';
 import StatsCards from '@/components/dashboard/StatsCards';
 import CustomerReviews from '@/components/dashboard/CustomerReviews';
 import Features from '@/components/dashboard/Features';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Dashboard: React.FC = () => {
   const { language } = useLanguage();
+  const isMobile = useIsMobile();
   const t = translations[language].dashboard;
   const reviews = reviewsSettingsLocale[language].reviews;
   const dashboardSettings = dashboardSettingsLocale[language];
@@ -19,11 +21,11 @@ const Dashboard: React.FC = () => {
   const showSliderControls = featuresSettings.showSliderControls;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">{t.title}</h1>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{t.title}</h1>
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-muted-foreground">{t.lastUpdated}: Today at 09:15 AM</span>
+          <span className="text-xs md:text-sm text-muted-foreground">{t.lastUpdated}: Today at 09:15 AM</span>
         </div>
       </div>
       

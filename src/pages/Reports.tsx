@@ -14,6 +14,7 @@ import {
   ResponsiveContainer 
 } from 'recharts';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const data = [
   { name: 'Jan', sales: 4000, revenue: 2400, profit: 2400 },
@@ -34,12 +35,12 @@ interface ReportCardProps {
 
 const ReportCard: React.FC<ReportCardProps> = ({ title, subtitle, value, change, isPositive }) => (
   <Card className="backdrop-blur-sm bg-white/50">
-    <CardHeader className="pb-2">
+    <CardHeader className="pb-2 px-3 py-3 md:p-6">
       <CardTitle className="text-sm font-medium">{title}</CardTitle>
-      <CardDescription>{subtitle}</CardDescription>
+      <CardDescription className="text-xs md:text-sm">{subtitle}</CardDescription>
     </CardHeader>
-    <CardContent>
-      <div className="text-2xl font-bold">{value}</div>
+    <CardContent className="px-3 pb-3 md:px-6 md:pb-6">
+      <div className="text-xl md:text-2xl font-bold">{value}</div>
       <p className={cn(
         "text-xs mt-1", 
         isPositive ? "text-green-600" : "text-red-600"
@@ -51,16 +52,18 @@ const ReportCard: React.FC<ReportCardProps> = ({ title, subtitle, value, change,
 );
 
 const Reports: React.FC = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold tracking-tight">Reports</h1>
-        <div className="flex items-center space-x-2">
-          <span className="text-sm text-muted-foreground">Reporting Period: Q2 2023</span>
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Reports</h1>
+        <div className="flex items-center">
+          <span className="text-xs md:text-sm text-muted-foreground">Reporting Period: Q2 2023</span>
         </div>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-2 sm:gap-4 md:gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         <ReportCard 
           title="Total Sales" 
           subtitle="Last 30 days" 
@@ -95,19 +98,19 @@ const Reports: React.FC = () => {
       </div>
       
       <Card className="backdrop-blur-sm bg-white/50">
-        <CardHeader>
-          <CardTitle>Sales Overview</CardTitle>
-          <CardDescription>Monthly sales performance</CardDescription>
+        <CardHeader className="px-4 py-3 md:p-6">
+          <CardTitle className="text-lg md:text-xl">Sales Overview</CardTitle>
+          <CardDescription className="text-xs md:text-sm">Monthly sales performance</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="h-[350px]">
+        <CardContent className="px-2 pb-4 md:px-6 md:pb-6">
+          <div className="h-[250px] md:h-[350px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
+              <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f1f1" />
-                <XAxis dataKey="name" stroke="#888888" fontSize={12} />
-                <YAxis stroke="#888888" fontSize={12} />
-                <Tooltip />
-                <Legend />
+                <XAxis dataKey="name" stroke="#888888" fontSize={isMobile ? 10 : 12} />
+                <YAxis stroke="#888888" fontSize={isMobile ? 10 : 12} />
+                <Tooltip contentStyle={{ fontSize: isMobile ? '10px' : '12px' }} />
+                <Legend wrapperStyle={{ fontSize: isMobile ? '10px' : '12px' }} />
                 <Bar dataKey="sales" name="Sales" fill="#000000" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="revenue" name="Revenue" fill="#404040" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="profit" name="Profit" fill="#808080" radius={[4, 4, 0, 0]} />
@@ -118,36 +121,36 @@ const Reports: React.FC = () => {
       </Card>
       
       <Card className="backdrop-blur-sm bg-white/50">
-        <CardHeader>
-          <CardTitle>Revenue Trends</CardTitle>
-          <CardDescription>Monthly revenue growth</CardDescription>
+        <CardHeader className="px-4 py-3 md:p-6">
+          <CardTitle className="text-lg md:text-xl">Revenue Trends</CardTitle>
+          <CardDescription className="text-xs md:text-sm">Monthly revenue growth</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="h-[350px]">
+        <CardContent className="px-2 pb-4 md:px-6 md:pb-6">
+          <div className="h-[250px] md:h-[350px]">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data}>
+              <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f1f1" />
-                <XAxis dataKey="name" stroke="#888888" fontSize={12} />
-                <YAxis stroke="#888888" fontSize={12} />
-                <Tooltip />
-                <Legend />
+                <XAxis dataKey="name" stroke="#888888" fontSize={isMobile ? 10 : 12} />
+                <YAxis stroke="#888888" fontSize={isMobile ? 10 : 12} />
+                <Tooltip contentStyle={{ fontSize: isMobile ? '10px' : '12px' }} />
+                <Legend wrapperStyle={{ fontSize: isMobile ? '10px' : '12px' }} />
                 <Line 
                   type="monotone" 
                   dataKey="revenue" 
                   name="Revenue" 
                   stroke="#000000" 
-                  strokeWidth={2} 
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
+                  strokeWidth={isMobile ? 1.5 : 2} 
+                  dot={{ r: isMobile ? 3 : 4 }}
+                  activeDot={{ r: isMobile ? 5 : 6 }}
                 />
                 <Line 
                   type="monotone" 
                   dataKey="profit" 
                   name="Profit" 
                   stroke="#808080" 
-                  strokeWidth={2} 
-                  dot={{ r: 4 }}
-                  activeDot={{ r: 6 }}
+                  strokeWidth={isMobile ? 1.5 : 2} 
+                  dot={{ r: isMobile ? 3 : 4 }}
+                  activeDot={{ r: isMobile ? 5 : 6 }}
                 />
               </LineChart>
             </ResponsiveContainer>
