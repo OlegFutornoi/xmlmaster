@@ -48,8 +48,8 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         {/* Logo */}
         <div className="flex items-center">
           <span className={cn(
-            "text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700",
-            theme === 'dark' && 'from-slate-100 to-slate-300'
+            "text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-emerald-500",
+            theme === 'dark' && 'from-emerald-400 to-emerald-300'
           )}>
             XMLMASTER
           </span>
@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <div className="flex items-center space-x-4">
             <a 
               href={contactSettings.socialMedia.youtube.url}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </a>
             <a 
               href={contactSettings.socialMedia.facebook.url}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -79,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </a>
             <a 
               href={contactSettings.socialMedia.instagram.url}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </a>
             <a 
               href={contactSettings.socialMedia.telegram.url}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              className="text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Telegram"
@@ -97,17 +97,17 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </a>
           </div>
           
-          {/* Contact Information */}
+          {/* Contact Information - Hidden on mobile */}
           <a 
             href={`tel:${contactSettings.contactInfo.phone}`} 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors duration-200"
+            className="hidden md:flex items-center text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
           >
             <Phone className="h-4 w-4 mr-2" />
             <span className="text-sm">{contactSettings.contactInfo.phone}</span>
           </a>
           <a 
             href={`mailto:${contactSettings.contactInfo.email}`} 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors duration-200"
+            className="hidden md:flex items-center text-muted-foreground hover:text-emerald-500 transition-colors duration-200"
           >
             <Mail className="h-4 w-4 mr-2" />
             <span className="text-sm">{contactSettings.contactInfo.email}</span>
@@ -119,7 +119,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             size="icon" 
             onClick={() => setLanguage(language === 'en' ? 'uk' : 'en')}
             title={language === 'en' ? 'Switch to Ukrainian' : 'Switch to English'}
-            className="h-8 w-8"
+            className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
           >
             <Globe className="h-4 w-4" />
           </Button>
@@ -130,7 +130,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             size="icon" 
             onClick={toggleTheme}
             title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-            className="h-8 w-8"
+            className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
           >
             {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
           </Button>

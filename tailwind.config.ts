@@ -65,7 +65,20 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))"
-        }
+        },
+        emerald: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          700: '#047857',
+          800: '#065f46',
+          900: '#064e3b',
+          950: '#022c22',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -104,6 +117,14 @@ export default {
         "slide-out": {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-100%)" }
+        },
+        "pulse-glow": {
+          "0%, 100%": { 
+            boxShadow: "0 0 0 0 rgba(16, 185, 129, 0)" 
+          },
+          "50%": { 
+            boxShadow: "0 0 20px 5px rgba(16, 185, 129, 0.3)" 
+          }
         }
       },
       animation: {
@@ -112,7 +133,8 @@ export default {
         "fade-in": "fade-in 0.3s ease-in-out",
         "fade-out": "fade-out 0.3s ease-in-out",
         "slide-in": "slide-in 0.3s ease-in-out",
-        "slide-out": "slide-out 0.3s ease-in-out"
+        "slide-out": "slide-out 0.3s ease-in-out",
+        "pulse-glow": "pulse-glow 2s infinite"
       }
     }
   },
