@@ -11,6 +11,7 @@ import {
   DrawerClose 
 } from '@/components/ui/drawer';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { X } from 'lucide-react';
 
 const DashboardLayout: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -18,6 +19,10 @@ const DashboardLayout: React.FC = () => {
 
   const toggleMobileMenu = () => {
     setIsDrawerOpen(prev => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsDrawerOpen(false);
   };
 
   return (
@@ -28,8 +33,15 @@ const DashboardLayout: React.FC = () => {
         {isMobile ? (
           <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
             <DrawerContent className="h-[85vh] p-0">
-              <div className="h-full overflow-y-auto">
-                <Sidebar className="w-full h-full static" />
+              <div className="h-full overflow-y-auto relative">
+                <button 
+                  onClick={closeMobileMenu}
+                  className="absolute top-4 right-4 p-2 rounded-full hover:bg-sidebar-accent transition-colors duration-200 z-10"
+                  aria-label="Close menu"
+                >
+                  <X size={18} />
+                </button>
+                <Sidebar className="w-full h-full static" onMenuItemClick={closeMobileMenu} />
               </div>
             </DrawerContent>
           </Drawer>

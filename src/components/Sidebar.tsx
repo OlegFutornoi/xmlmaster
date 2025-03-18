@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard,
   Download, 
@@ -15,6 +15,7 @@ import { translations } from '@/config/localeSettings';
 
 interface SidebarProps {
   className?: string;
+  onMenuItemClick?: () => void;
 }
 
 export interface MenuItem {
@@ -46,14 +47,21 @@ const getMenuItems = (): MenuItem[] => [
   }
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, onMenuItemClick }) => {
   const [collapsed, setCollapsed] = useState(false);
   const { language } = useLanguage();
   const t = translations[language].menu;
   const menuItems = getMenuItems();
+  const navigate = useNavigate();
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
+  };
+
+  const handleMenuItemClick = (path: string) => {
+    if (onMenuItemClick) {
+      onMenuItemClick();
+    }
   };
 
   return (
@@ -81,6 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               <li key={index}>
                 <Link
                   to={item.path}
+                  onClick={() => handleMenuItemClick(item.path)}
                   className={cn(
                     "flex items-center px-3 py-2 rounded-md text-sidebar-foreground hover:bg-sidebar-accent transition-colors duration-200",
                     "hover:text-sidebar-accent-foreground focus:outline-none",
