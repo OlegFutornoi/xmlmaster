@@ -56,7 +56,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             </p>
           </div>
           
-          <nav className="flex flex-wrap justify-center gap-6">
+          <nav className="hidden md:flex flex-wrap justify-center gap-6">
             {menuItems.map((item, index) => (
               <Link
                 key={index}

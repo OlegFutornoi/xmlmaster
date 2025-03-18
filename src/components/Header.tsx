@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, Youtube, Facebook, Instagram, Globe, Moon, Sun } from 'lucide-react';
+import { Mail, Phone, Youtube, Facebook, Instagram, Globe, Moon, Sun, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
@@ -10,9 +10,10 @@ import { translations } from '@/config/localeSettings';
 
 interface HeaderProps {
   className?: string;
+  toggleMobileMenu?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ className }) => {
+const Header: React.FC<HeaderProps> = ({ className, toggleMobileMenu }) => {
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   
@@ -45,18 +46,51 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       className
     )}>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Logo */}
-        <div className="flex items-center">
+        {/* Mobile Menu Button and Logo */}
+        <div className="flex items-center w-full md:w-auto justify-between">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleMobileMenu}
+            className="md:hidden h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
+            aria-label="Toggle menu"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+          
           <span className={cn(
             "text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-emerald-500",
             theme === 'dark' && 'from-emerald-400 to-emerald-300'
           )}>
             XMLMASTER
           </span>
+          
+          {/* Language and Theme toggles on mobile (right side) */}
+          <div className="flex md:hidden gap-1">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setLanguage(language === 'en' ? 'uk' : 'en')}
+              title={language === 'en' ? 'Switch to Ukrainian' : 'Switch to English'}
+              className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
+            >
+              <Globe className="h-4 w-4" />
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleTheme}
+              title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+              className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
+            >
+              {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            </Button>
+          </div>
         </div>
 
         {/* Social Media and Contact Information */}
-        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+        <div className="hidden md:flex flex-wrap justify-center items-center gap-4 md:gap-6">
           {/* Social Media Icons */}
           <div className="flex items-center space-x-4">
             <a 
@@ -119,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             size="icon" 
             onClick={() => setLanguage(language === 'en' ? 'uk' : 'en')}
             title={language === 'en' ? 'Switch to Ukrainian' : 'Switch to English'}
-            className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
+            className="hidden md:flex h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
           >
             <Globe className="h-4 w-4" />
           </Button>
@@ -130,7 +164,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             size="icon" 
             onClick={toggleTheme}
             title={theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-            className="h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
+            className="hidden md:flex h-8 w-8 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400"
           >
             {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
           </Button>

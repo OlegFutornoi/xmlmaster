@@ -123,3 +123,9 @@
 .btn-glow:hover::after {
   transform: rotate(45deg) translateY(100%);
 }
+
+/* Mobile menu styles */
+.mobile-drawer-content {
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
