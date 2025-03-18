@@ -24,9 +24,6 @@ const Dashboard: React.FC = () => {
     <div className="space-y-4 md:space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{t.title}</h1>
-        <div className="flex items-center space-x-2">
-          <span className="text-xs md:text-sm text-muted-foreground">{t.lastUpdated}: Today at 09:15 AM</span>
-        </div>
       </div>
       
       <StatsCards cards={dashboardSettings.cards} />
