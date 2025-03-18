@@ -12,10 +12,12 @@ import {
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/config/localeSettings';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface SidebarProps {
   className?: string;
   onMenuItemClick?: () => void;
+  hideMobileToggle?: boolean;
 }
 
 export interface MenuItem {
@@ -47,12 +49,13 @@ const getMenuItems = (): MenuItem[] => [
   }
 ];
 
-const Sidebar: React.FC<SidebarProps> = ({ className, onMenuItemClick }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, onMenuItemClick, hideMobileToggle = false }) => {
   const [collapsed, setCollapsed] = useState(false);
   const { language } = useLanguage();
   const t = translations[language].menu;
   const menuItems = getMenuItems();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -64,6 +67,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onMenuItemClick }) => {
     }
   };
 
+  const shouldShowCollapseButton = !hideMobileToggle && !(isMobile && hideMobileToggle);
+
   return (
     <aside 
       className={cn(
@@ -73,15 +78,17 @@ const Sidebar: React.FC<SidebarProps> = ({ className, onMenuItemClick }) => {
       )}
     >
       <div className="h-full flex flex-col">
-        <div className="p-4 flex justify-end">
-          <button 
-            onClick={toggleCollapse}
-            className="p-2 rounded-full hover:bg-sidebar-accent transition-colors duration-200"
-            aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          >
-            {collapsed ? <Menu size={18} /> : <ChevronLeft size={18} />}
-          </button>
-        </div>
+        {shouldShowCollapseButton && (
+          <div className="p-4 flex justify-end">
+            <button 
+              onClick={toggleCollapse}
+              className="p-2 rounded-full hover:bg-sidebar-accent transition-colors duration-200"
+              aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {collapsed ? <Menu size={18} /> : <ChevronLeft size={18} />}
+            </button>
+          </div>
+        )}
         
         <nav className="flex-1 overflow-y-auto py-6">
           <ul className="space-y-1 px-2">

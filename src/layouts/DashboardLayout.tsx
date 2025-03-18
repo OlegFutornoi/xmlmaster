@@ -32,7 +32,10 @@ const DashboardLayout: React.FC = () => {
         {/* Mobile drawer for sidebar */}
         {isMobile ? (
           <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-            <DrawerContent className="h-[85vh] p-0">
+            <DrawerContent 
+              className="h-[85vh] p-0 fixed inset-y-0 left-0 w-3/4 max-w-sm border-r data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left"
+              side="left"
+            >
               <div className="h-full overflow-y-auto relative">
                 <button 
                   onClick={closeMobileMenu}
@@ -41,7 +44,7 @@ const DashboardLayout: React.FC = () => {
                 >
                   <X size={18} />
                 </button>
-                <Sidebar className="w-full h-full static" onMenuItemClick={closeMobileMenu} />
+                <Sidebar className="w-full h-full static" onMenuItemClick={closeMobileMenu} hideMobileToggle={true} />
               </div>
             </DrawerContent>
           </Drawer>
